@@ -283,7 +283,7 @@ export const StudioProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   const [activeTab, setActiveTab] = useState<ActiveTab>('dashboard');
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     const saved = localStorage.getItem('studioerp_darkmode_v4') || localStorage.getItem('studioerp_darkmode_v2');
-    return saved ? JSON.parse(saved) : true;
+    return saved ? JSON.parse(saved) : false;
   });
 
   // LocalStorage syncing & Multi-Tab Broadcast

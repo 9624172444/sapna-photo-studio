@@ -337,14 +337,35 @@ export const Navbar: React.FC<NavbarProps> = ({
                 )}
               </button>
 
-              {/* Dark / Light Toggle */}
-              <button
-                onClick={() => setDarkMode(!darkMode)}
-                className="p-1.5 sm:p-2 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
-                title="Toggle Theme"
-              >
-                {darkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4" />}
-              </button>
+              {/* Dual White & Dark Theme Selector */}
+              <div className="flex items-center bg-slate-100 dark:bg-slate-800 p-0.5 sm:p-1 rounded-xl border border-slate-200 dark:border-slate-700">
+                <button
+                  type="button"
+                  onClick={() => setDarkMode(false)}
+                  className={`flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-bold transition cursor-pointer ${
+                    !darkMode
+                      ? 'bg-white text-amber-600 shadow-xs'
+                      : 'text-slate-400 hover:text-slate-200'
+                  }`}
+                  title="Switch to White / Light Mode"
+                >
+                  <Sun className="w-3.5 h-3.5" />
+                  <span className="hidden md:inline">White</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setDarkMode(true)}
+                  className={`flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-bold transition cursor-pointer ${
+                    darkMode
+                      ? 'bg-slate-900 text-amber-400 shadow-xs'
+                      : 'text-slate-500 hover:text-slate-700'
+                  }`}
+                  title="Switch to Dark Mode"
+                >
+                  <Moon className="w-3.5 h-3.5" />
+                  <span className="hidden md:inline">Dark</span>
+                </button>
+              </div>
 
               {/* Mobile Hamburger Drawer Button */}
               <button
@@ -547,6 +568,36 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Drawer Footer */}
             <div className="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-2">
+              <div className="flex items-center justify-between p-2 rounded-xl bg-slate-100 dark:bg-slate-800">
+                <span className="text-xs font-bold text-slate-700 dark:text-slate-300">Theme</span>
+                <div className="flex items-center gap-1">
+                  <button
+                    type="button"
+                    onClick={() => setDarkMode(false)}
+                    className={`flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-bold transition cursor-pointer ${
+                      !darkMode
+                        ? 'bg-white text-amber-600 shadow-xs'
+                        : 'text-slate-400'
+                    }`}
+                  >
+                    <Sun className="w-3.5 h-3.5" />
+                    <span>White</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setDarkMode(true)}
+                    className={`flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-bold transition cursor-pointer ${
+                      darkMode
+                        ? 'bg-slate-900 text-amber-400 shadow-xs'
+                        : 'text-slate-500'
+                    }`}
+                  >
+                    <Moon className="w-3.5 h-3.5" />
+                    <span>Dark</span>
+                  </button>
+                </div>
+              </div>
+
               <button
                 onClick={() => {
                   setIsMobileMenuOpen(false);
@@ -558,7 +609,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span>New Counter Booking</span>
               </button>
               <p className="text-[10px] text-center text-slate-400">
-                Sapna Photoshop &bull; Mansa, Gandhinagar
+                Sapna Photo Studio &bull; Mansa, Gandhinagar
               </p>
             </div>
           </div>
