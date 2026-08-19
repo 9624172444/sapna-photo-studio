@@ -332,8 +332,27 @@ export const BillingView: React.FC<BillingViewProps> = ({ onOpenRecordPayment })
                             {ord.invoiceNumber}
                           </td>
                           <td className="py-3 px-4">
-                            <p className="font-bold text-slate-900 dark:text-white text-sm">{ord.clientName}</p>
-                            <p className="text-[11px] text-slate-400 capitalize">{ord.serviceTitle}</p>
+                            <div className="flex flex-wrap items-center gap-1.5">
+                              <span className="font-bold text-slate-900 dark:text-white text-sm">{ord.clientName}</span>
+                              {ord.mobileNumber && (
+                                <span className="text-[10px] font-mono text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded-md border border-slate-200 dark:border-slate-700">
+                                  📞 {ord.mobileNumber}
+                                </span>
+                              )}
+                            </div>
+                            <div className="flex flex-wrap items-center gap-1.5 mt-0.5 text-[11px]">
+                              <span className="text-slate-400 capitalize">{ord.serviceTitle}</span>
+                              {ord.photoNumber && (
+                                <span className="text-[10px] font-mono font-bold text-amber-600 dark:text-amber-400 bg-amber-500/10 px-1.5 py-0.2 rounded border border-amber-500/20">
+                                  📷 {ord.photoNumber}
+                                </span>
+                              )}
+                              {ord.passportSpecs?.attireType === 'suit' && (
+                                <span className="text-[9px] font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-500/10 px-1.5 py-0.2 rounded border border-indigo-500/20">
+                                  👔 Suit
+                                </span>
+                              )}
+                            </div>
                           </td>
                           <td className="py-3 px-4 text-slate-600 dark:text-slate-300 font-medium">
                             {ord.createdAt}
